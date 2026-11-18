@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triple F · Faiz Fast Food</title>
+  <!-- Font Awesome 5 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: #f8f5f0;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+
+    /* KFC-inspired red & white theme, with a touch of gold */
+    :root {
+      --kfc-red: #c8102e;
+      --kfc-red-dark: #a00b24;
+      --kfc-white: #ffffff;
+      --kfc-cream: #fff9f0;
+      --kfc-gold: #ffb81c;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* header / nav */
+    .top-bar {
+      background: var(--kfc-red);
+      color: white;
+      padding: 8px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-bar i {
+      margin-right: 6px;
+      color: var(--kfc-gold);
+    }
+
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      transition: opacity 0.2s;
+    }
+
+    .top-bar a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* main header */
+    .main-header {
+      background: var(--kfc-white);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      background: var(--kfc-red);
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      box-shadow: 0 4px 8px rgba(200, 16, 46, 0.3);
+    }
+
+    .logo-text h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--kfc-red);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: #333;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2d2d;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--kfc-red);
+    }
+
+    .order-btn {
+      background: var(--kfc-red);
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 10px rgba(200, 16, 46, 0.4);
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .order-btn:hover {
+      background: var(--kfc-red-dark);
+      transform: scale(1.02);
+    }
+
+    .order-btn i {
+      margin-right: 8px;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(135deg, #fff5e6 0%, #ffe8d9 100%);
+      padding: 40px 5% 50px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border-bottom: 6px solid var(--kfc-red);
+    }
+
+    .hero-text {
+      flex: 1 1 350px;
+    }
+
+    .hero-text .badge {
+      background: var(--kfc-red);
+      color: white;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h2 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #1e1e1e;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h2 span {
+      color: var(--kfc-red);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--kfc-red);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(200, 16, 46, 0.25);
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .btn-primary i {
+      font-size: 1.2rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--kfc-red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--kfc-red);
+      color: var(--kfc-red);
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--kfc-red);
+      color: white;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      text-align: center;
+      font-size: 9rem;
+      filter: drop-shadow(0 12px 10px rgba(0, 0, 0, 0.1));
+    }
+
+    /* menu section */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 50px 0 10px;
+      color: #1e1e1e;
+      position: relative;
+    }
+
+    .section-title span {
+      color: var(--kfc-red);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 0 5% 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(200, 16, 46, 0.1);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-img {
+      background: #fff2e6;
+      padding: 28px 10px 20px;
+      text-align: center;
+      font-size: 4.5rem;
+      border-bottom: 3px dashed rgba(200, 16, 46, 0.2);
+    }
+
+    .card-content {
+      padding: 20px 18px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 6px;
+    }
+
+    .card-content .desc {
+      font-size: 0.9rem;
+      color: #6b6b6b;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .price {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--kfc-red);
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price small {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #777;
+      background: #f1f1f1;
+      padding: 4px 10px;
+      border-radius: 30px;
+    }
+
+    .add-btn {
+      background: transparent;
+      border: 2px solid var(--kfc-red);
+      color: var(--kfc-red);
+      padding: 10px 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .add-btn i {
+      font-size: 1rem;
+    }
+
+    .add-btn:hover {
+      background: var(--kfc-red);
+      color: white;
+    }
+
+    /* contact & location */
+    .contact-section {
+      background: var(--kfc-cream);
+      padding: 50px 5%;
+      margin-top: 20px;
+      border-top: 5px solid var(--kfc-red);
+    }
+
+    .contact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 28px 22px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      background: var(--kfc-red);
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1e1e1e;
+    }
+
+    .contact-detail p, .contact-detail a {
+      color: #3d3d3d;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-detail a:hover {
+      color: var(--kfc-red);
+      text-decoration: underline;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.02);
+    }
+
+    /* footer */
+    footer {
+      background: #1e1e1e;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 5%;
+      font-size: 0.95rem;
+      border-top: 4px solid var(--kfc-red);
+    }
+
+    footer a {
+      color: var(--kfc-gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* floating whatsapp */
+    .float-wa {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .float-wa:hover {
+      background: #128C7E;
+      transform: scale(1.1);
+      color: white;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .main-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .logo-area {
+        justify-content: center;
+      }
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .hero-text h2 {
+        font-size: 2.3rem;
+      }
+      .hero-image {
+        font-size: 6rem;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .contact-info {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- top bar with contact / whatsapp -->
+  <div class="top-bar">
+    <div class="contact-info">
+      <span><i class="fas fa-phone-alt"></i> 0343 0684357</span>
+      <span><i class="fas fa-map-pin"></i> DHA Phase 8, Lahore</span>
+    </div>
+    <div>
+      <a href="https://wa.me/923430684357" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+  </div>
+
+  <!-- main header -->
+  <header class="main-header">
+    <div class="logo-area">
+      <div class="logo-icon">FFF</div>
+      <div class="logo-text">
+        <h1>Triple F</h1>
+        <span>FAIZ FAST FOOD</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+      <a href="https://wa.me/923430684357" target="_blank" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge"><i class="fas fa-fire"></i> Crispy · Juicy · Pakistani Rates</div>
+      <h2>Craving <span>KFC-style</span> crunch? <br>Try Triple F!</h2>
+      <p>Authentic fried chicken, zinger burgers, and sizzling sides — all at pocket-friendly Pakistani prices.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> See Menu</a>
+        <a href="https://wa.me/923430684357" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      🍗
+    </div>
+  </section>
+
+  <!-- menu section -->
+  <h2 class="section-title">Our <span>Menu</span> & Pakistani Rates</h2>
+  <p class="section-subtitle">All prices in PKR · Freshly prepared</p>
+
+  <div class="menu-grid" id="menu">
+    <!-- 1. Zinger Burger -->
+    <div class="menu-card">
+      <div class="card-img">🍔</div>
+      <div class="card-content">
+        <h3>Zinger Burger</h3>
+        <p class="desc">Crispy chicken fillet, lettuce, mayo, sesame bun.</p>
+        <div class="price">Rs. 580 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Zinger Burger added to cart (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 2. Chicken Pieces (3 pcs) -->
+    <div class="menu-card">
+      <div class="card-img">🍗</div>
+      <div class="card-content">
+        <h3>Chicken Pieces (3 pcs)</h3>
+        <p class="desc">Hot & crispy, original recipe, 3 pieces.</p>
+        <div class="price">Rs. 690 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Chicken Pieces added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 3. Hot Wings (6 pcs) -->
+    <div class="menu-card">
+      <div class="card-img">🍗</div>
+      <div class="card-content">
+        <h3>Hot Wings (6 pcs)</h3>
+        <p class="desc">Spicy, tangy wings — perfect for sharing.</p>
+        <div class="price">Rs. 520 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Hot Wings added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 4. French Fries -->
+    <div class="menu-card">
+      <div class="card-img">🍟</div>
+      <div class="card-content">
+        <h3>French Fries</h3>
+        <p class="desc">Golden, crispy, salted — classic fries.</p>
+        <div class="price">Rs. 250 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('French Fries added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 5. Chicken Burger -->
+    <div class="menu-card">
+      <div class="card-img">🍔</div>
+      <div class="card-content">
+        <h3>Chicken Burger</h3>
+        <p class="desc">Grilled chicken patty, fresh veggies, sauce.</p>
+        <div class="price">Rs. 450 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Chicken Burger added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 6. Family Bucket (9 pcs) -->
+    <div class="menu-card">
+      <div class="card-img">🍗🍗</div>
+      <div class="card-content">
+        <h3>Family Bucket (9 pcs)</h3>
+        <p class="desc">9 pcs chicken + 2 dips + 2 fries.</p>
+        <div class="price">Rs. 2,150 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Family Bucket added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 7. Coleslaw -->
+    <div class="menu-card">
+      <div class="card-img">🥗</div>
+      <div class="card-content">
+        <h3>Coleslaw</h3>
+        <p class="desc">Creamy, fresh, perfect side.</p>
+        <div class="price">Rs. 180 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Coleslaw added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+    <!-- 8. Soft Drink -->
+    <div class="menu-card">
+      <div class="card-img">🥤</div>
+      <div class="card-content">
+        <h3>Soft Drink</h3>
+        <p class="desc">Regular 350ml (Pepsi/7up/Mirinda).</p>
+        <div class="price">Rs. 120 <small>incl. tax</small></div>
+        <button class="add-btn" onclick="alert('Soft Drink added (demo)')"><i class="fas fa-plus-circle"></i> Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- contact & location section -->
+  <section class="contact-section" id="contact">
+    <h2 class="section-title" style="margin-top:0;">Find <span>Triple F</span> in Lahore</h2>
+    <p class="section-subtitle">DHA Phase 8 · Call or WhatsApp for delivery</p>
+
+    <div class="contact-grid">
+      <!-- phone card -->
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-detail">
+          <h4>Call us</h4>
+          <a href="tel:03430684357">0343 0684357</a>
+          <p style="font-size:0.9rem; color:#777;">Daily 12pm – 2am</p>
+        </div>
+      </div>
+      <!-- whatsapp card -->
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-detail">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/923430684357" target="_blank">0343 0684357</a>
+          <a href="https://wa.me/923430684357" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat now</a>
+        </div>
+      </div>
+      <!-- location card -->
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-detail">
+          <h4>Location</h4>
+          <p>DHA Phase 8, Lahore</p>
+          <p style="font-size:0.9rem; color:#777;">Near commercial area, easy parking</p>
+          <a href="https://maps.google.com/?q=DHA+Phase+8+Lahore" target="_blank" style="color:var(--kfc-red); font-weight:600; margin-top:8px; display:inline-block;">Get directions <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <p>© 2025 Triple F (Faiz Fast Food) — All rights reserved.</p>
+    <p style="margin-top:10px;">
+      <i class="fas fa-phone"></i> 0343 0684357 &nbsp;|&nbsp;
+      <i class="fas fa-map-pin"></i> DHA Phase 8, Lahore &nbsp;|&nbsp;
+      <a href="https://wa.me/923430684357" target="_blank">WhatsApp</a>
+    </p>
+  </footer>
+
+  <!-- floating whatsapp button -->
+  <a href="https://wa.me/923430684357" class="float-wa" target="_blank" aria-label="Order on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // simple demo cart function (optional)
+    function addToCart(item) {
+      alert(item + ' added to cart (demo). For real order, please WhatsApp us!');
+    }
+  </script>
+</body>
+  </html>
