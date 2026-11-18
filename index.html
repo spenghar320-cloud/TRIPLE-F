@@ -20,7 +20,6 @@
       line-height: 1.5;
     }
 
-    /* GOLDEN BLACK THEME */
     :root {
       --kfc-black: #0d0d0d;
       --kfc-dark: #1a1a1a;
@@ -171,7 +170,6 @@
       justify-content: space-between;
       gap: 30px;
       border-bottom: 3px solid var(--kfc-gold);
-      position: relative;
     }
 
     .hero-text {
@@ -266,8 +264,14 @@
     .hero-image {
       flex: 1 1 300px;
       text-align: center;
-      font-size: 9rem;
       filter: drop-shadow(0 12px 15px rgba(0, 0, 0, 0.8));
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(201, 160, 61, 0.2);
     }
 
     /* menu section */
@@ -319,20 +323,23 @@
 
     .card-img {
       background: #000;
-      padding: 20px 10px;
-      text-align: center;
-      font-size: 4rem;
-      border-bottom: 2px solid var(--kfc-gold-dark);
-      height: 140px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      border-bottom: 2px solid var(--kfc-gold-dark);
     }
 
     .card-img img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover .card-img img {
+      transform: scale(1.05);
     }
 
     .card-content {
@@ -392,21 +399,20 @@
       gap: 8px;
     }
 
-    .add-btn i {
-      font-size: 1rem;
-    }
-
     .add-btn:hover {
       background: var(--kfc-gold);
       color: #0d0d0d;
     }
 
-    /* contact & location */
+    /* contact & location - now at bottom, full width */
     .contact-section {
       background: #111;
       padding: 60px 5%;
-      margin-top: 20px;
       border-top: 3px solid var(--kfc-gold);
+    }
+
+    .contact-section .section-title {
+      margin-top: 0;
     }
 
     .contact-grid {
@@ -551,9 +557,6 @@
       .hero-text h2 {
         font-size: 2.3rem;
       }
-      .hero-image {
-        font-size: 6rem;
-      }
       .top-bar {
         flex-direction: column;
         align-items: center;
@@ -567,7 +570,7 @@
 </head>
 <body>
 
-  <!-- top bar -->
+  <!-- top bar (only phone/location, no contact section link) -->
   <div class="top-bar">
     <div class="contact-info">
       <span><i class="fas fa-phone-alt"></i> 0343 0684357</span>
@@ -575,7 +578,6 @@
     </div>
     <div>
       <a href="https://wa.me/923430684357" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
   </div>
 
@@ -595,7 +597,7 @@
     </div>
   </header>
 
-  <!-- hero -->
+  <!-- hero with realistic image -->
   <section class="hero">
     <div class="hero-text">
       <div class="badge"><i class="fas fa-crown"></i> Golden Crispy · KFC Style</div>
@@ -607,7 +609,7 @@
       </div>
     </div>
     <div class="hero-image">
-      🍗
+      <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80" alt="Fried chicken bucket">
     </div>
   </section>
 
@@ -618,7 +620,9 @@
   <div class="menu-grid" id="menu">
     <!-- 1. Zinger Burger -->
     <div class="menu-card">
-      <div class="card-img">🍔</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80" alt="Zinger Burger">
+      </div>
       <div class="card-content">
         <h3>Zinger Burger</h3>
         <p class="desc">Crispy chicken fillet, lettuce, mayo, sesame bun.</p>
@@ -628,7 +632,9 @@
     </div>
     <!-- 2. Mighty Zinger -->
     <div class="menu-card">
-      <div class="card-img">🍔🔥</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80" alt="Mighty Zinger">
+      </div>
       <div class="card-content">
         <h3>Mighty Zinger</h3>
         <p class="desc">Double fillet, cheese, spicy mayo — big appetite.</p>
@@ -638,7 +644,9 @@
     </div>
     <!-- 3. Krunch Burger -->
     <div class="menu-card">
-      <div class="card-img">🍔💥</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&auto=format&fit=crop&q=80" alt="Krunch Burger">
+      </div>
       <div class="card-content">
         <h3>Krunch Burger</h3>
         <p class="desc">Crunchy chicken strip, hash brown, mayo.</p>
@@ -648,7 +656,9 @@
     </div>
     <!-- 4. Chicken Pieces (3 pcs) -->
     <div class="menu-card">
-      <div class="card-img">🍗</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&auto=format&fit=crop&q=80" alt="Chicken Pieces">
+      </div>
       <div class="card-content">
         <h3>Chicken Pieces (3 pcs)</h3>
         <p class="desc">Hot & crispy, original recipe, 3 pieces.</p>
@@ -658,7 +668,9 @@
     </div>
     <!-- 5. Hot Wings (6 pcs) -->
     <div class="menu-card">
-      <div class="card-img">🍗🌶️</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?w=400&auto=format&fit=crop&q=80" alt="Hot Wings">
+      </div>
       <div class="card-content">
         <h3>Hot Wings (6 pcs)</h3>
         <p class="desc">Spicy, tangy wings — perfect for sharing.</p>
@@ -668,7 +680,9 @@
     </div>
     <!-- 6. Chicken & Chips -->
     <div class="menu-card">
-      <div class="card-img">🍗🍟</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=80" alt="Chicken and Chips">
+      </div>
       <div class="card-content">
         <h3>Chicken & Chips</h3>
         <p class="desc">1 pc chicken + regular fries + dip.</p>
@@ -678,7 +692,9 @@
     </div>
     <!-- 7. French Fries -->
     <div class="menu-card">
-      <div class="card-img">🍟</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&auto=format&fit=crop&q=80" alt="French Fries">
+      </div>
       <div class="card-content">
         <h3>French Fries</h3>
         <p class="desc">Golden, crispy, salted — classic fries.</p>
@@ -688,7 +704,9 @@
     </div>
     <!-- 8. Zingeratha -->
     <div class="menu-card">
-      <div class="card-img">🌯</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&auto=format&fit=crop&q=80" alt="Zingeratha wrap">
+      </div>
       <div class="card-content">
         <h3>Zingeratha</h3>
         <p class="desc">Zinger strip wrapped in paratha with sauce.</p>
@@ -698,7 +716,9 @@
     </div>
     <!-- 9. Rice & Spice -->
     <div class="menu-card">
-      <div class="card-img">🍚</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&auto=format&fit=crop&q=80" alt="Rice and Spice">
+      </div>
       <div class="card-content">
         <h3>Rice & Spice</h3>
         <p class="desc">Spiced rice with crispy chicken chunks.</p>
@@ -708,7 +728,9 @@
     </div>
     <!-- 10. Coleslaw -->
     <div class="menu-card">
-      <div class="card-img">🥗</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1625938145744-2b7c9c2d7e5e?w=400&auto=format&fit=crop&q=80" alt="Coleslaw">
+      </div>
       <div class="card-content">
         <h3>Coleslaw</h3>
         <p class="desc">Creamy, fresh, perfect side.</p>
@@ -718,7 +740,9 @@
     </div>
     <!-- 11. Soft Drink -->
     <div class="menu-card">
-      <div class="card-img">🥤</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=400&auto=format&fit=crop&q=80" alt="Soft Drink">
+      </div>
       <div class="card-content">
         <h3>Soft Drink</h3>
         <p class="desc">Regular 345ml (Pepsi/7up/Mirinda).</p>
@@ -728,7 +752,9 @@
     </div>
     <!-- 12. Value Bucket (9 pcs) -->
     <div class="menu-card">
-      <div class="card-img">🍗🍗🍗</div>
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&auto=format&fit=crop&q=80" alt="Value Bucket">
+      </div>
       <div class="card-content">
         <h3>Value Bucket (9 pcs)</h3>
         <p class="desc">9 pcs hot & crispy chicken — family size.</p>
@@ -738,9 +764,9 @@
     </div>
   </div>
 
-  <!-- contact & location -->
+  <!-- contact & location - now at bottom -->
   <section class="contact-section" id="contact">
-    <h2 class="section-title" style="margin-top:0;">Find <span>Triple F</span> in Lahore</h2>
+    <h2 class="section-title">Find <span>Triple F</span> in Lahore</h2>
     <p class="section-subtitle">DHA Phase 8 · Call or WhatsApp for delivery</p>
 
     <div class="contact-grid">
@@ -753,4 +779,44 @@
         </div>
       </div>
       <div class="contact-card">
-        <div class="contact-icon"><i class="fab fa-whatsapp"></i><
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-detail">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/923430684357" target="_blank">0343 0684357</a>
+          <a href="https://wa.me/923430684357" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat now</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-detail">
+          <h4>Location</h4>
+          <p>DHA Phase 8, Lahore</p>
+          <p style="font-size:0.9rem; color:#777;">Near commercial area, easy parking</p>
+          <a href="https://maps.google.com/?q=DHA+Phase+8+Lahore" target="_blank" style="color:var(--kfc-gold); font-weight:600; margin-top:8px; display:inline-block;">Get directions <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <p>© 2026 Triple F (Faiz Fast Food) — All rights reserved.</p>
+    <p style="margin-top:10px;">
+      <i class="fas fa-phone"></i> 0343 0684357 &nbsp;|&nbsp;
+      <i class="fas fa-map-pin"></i> DHA Phase 8, Lahore &nbsp;|&nbsp;
+      <a href="https://wa.me/923430684357" target="_blank">WhatsApp</a>
+    </p>
+  </footer>
+
+  <!-- floating whatsapp -->
+  <a href="https://wa.me/923430684357" class="float-wa" target="_blank" aria-label="Order on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    function addToCart(item) {
+      alert(item + ' added to cart (demo). For real order, please WhatsApp us!');
+    }
+  </script>
+</body>
+</html>
